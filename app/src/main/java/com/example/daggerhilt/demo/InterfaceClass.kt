@@ -5,8 +5,6 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.internal.managers.ApplicationComponentManager
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -53,9 +51,9 @@ class AppModule1 {
     @Singleton
     fun binding(): One = ImplementOne()
 
-    @Provides
+  /*  @Provides
     @Singleton
-    fun getName() : String ="Anindya"
+    fun getName() : String ="Anindya"*/
 
     @Provides
     @Singleton

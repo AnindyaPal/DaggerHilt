@@ -2,7 +2,11 @@ package com.example.daggerhilt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.example.daggerhilt.demo.*
+import com.example.daggerhilt.viewModel.PostViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var qualifierSample: QualifierSample
 
+    private val postViewModel: PostViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,6 +44,11 @@ class MainActivity : AppCompatActivity() {
         implementOne.getName()
 
         qualifierSample.getName()
+
+        postViewModel.response.observe(this, Observer {
+            response->
+            Log.e("Asd", response.get(0).body);
+        })
     }
 }
 
